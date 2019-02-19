@@ -17,3 +17,16 @@ export function validate<T>(instance: T, clss?: { new(...args: any[]): T }) {
         return Joi.validate(instance, schema);
     }
 }
+
+export function createSchemaFromClass<T>(clss?: { new(...args: any[]): T }) {
+    const constructor = clss ? clss : {};
+    const metadata: NullableValidationMetadata<T> = Reflect.getMetadata(
+        METADATA_KEY.VALIDATION_RULES,
+        constructor
+    );
+    if (metadata === undefined) {
+        throw new Error(noMetadataWasFound(''));
+    } else {
+        return createSchemaFromMetadata<T>(metadata);
+    }
+}

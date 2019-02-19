@@ -2,7 +2,7 @@
   "name": "zafiro-validators",
   "version": "1.1.0",
   "description": "Decorator based interface for Joi",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "jsnext:main": "es/index.js",
   "typings": "./dts/index.d.ts",
   "scripts": {

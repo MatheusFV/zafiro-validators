@@ -9,11 +9,7 @@ export function createSchemaFromMetadata<T>(
     const keyArr = Array.from(keys);
     keyArr.forEach(key => {
         const val = metadata.get(key);
-        if (typeof val === 'object') {
-            obj[key] = createSchemaFromMetadata(val);
-        } else {
-            obj[key] = val;
-        }
+        obj[key] = val;
     });
     return Joi.object().keys(obj);
 }
